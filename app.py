@@ -3,7 +3,29 @@ import pycountry
 from tkinter import Tk, Label, Button, Entry
 from phone_iso3166.country import phone_country
 import os
+from html.parser import HTMLParser
 
+class MyHTMLParser(HTMLParser):
+    def handle_comment(self, data):
+        pass
+
+    def handle_starttag(self, tag, attrs):
+        pass
+
+    def handle_data(self, data):
+        pass
+
+def main():
+    # instantiate the parser and feed it some HTML
+    parser = MyHTMLParser()
+    
+    f = open("samplehtml.html")
+    if f.mode == "r":
+        contents = f.read() # read the entire file
+        parser.feed(contents)    
+
+if __name__ == "__main__":
+    main()
 totalbytes = 0
 
 # get a list of all the files in the current directory
